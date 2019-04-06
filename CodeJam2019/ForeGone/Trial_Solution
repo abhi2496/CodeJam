@@ -1,0 +1,55 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Trial_Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+
+        //Reading the number of test cases
+        int t = sc.nextInt();
+
+        long n = sc.nextLong();
+
+        //Looping through the test cases
+        for (int i = 1; i <= t; i++) {
+            String tmp = String.valueOf(n);
+/*
+            int index = tmp.indexOf('4');
+            int x[] = new int[tmp.length()+1];
+            int j = 0;
+            while (index >= 0) {
+                x[j] = index;
+                index = tmp.indexOf('4', index++);
+            }
+*/
+            char guess='4';
+            int x[] = new int[tmp.length()+1];
+            int j = 0;
+
+            for (int index = tmp.indexOf(guess);
+                 index >= 0;
+                 index = tmp.indexOf(guess, index + 1))
+            {
+                x[j++] = index;
+                System.out.println(index);
+            }
+
+            long c = 0;
+            j = 0;
+            while (j <= x.length) {
+                c = c + (10 ^ (tmp.length()+1 - x[j++]));
+            }
+            long a = n - c;
+            long b = c;
+            System.out.println("Case #" + i + ": " + a + " " + b);
+        }
+    }
+}
+
+/*
+* Worked for others.
+* Ex. 324  = (324  -  1)  + 1
+*     3421 = (3421 - 100) + 100
+*   964941 = (964941 - 1000 - 10) + 1010
+ */
