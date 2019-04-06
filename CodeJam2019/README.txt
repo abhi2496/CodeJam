@@ -1,4 +1,4 @@
-This folder will contain solutions for the various problems.
+This folder contains solutions to the problems.
 
 Result:
 ForeGone : Pass, TLE, Skipped
